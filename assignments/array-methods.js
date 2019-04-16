@@ -85,11 +85,24 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-
 // Problem 1
-
+// The event director needs to have all the runner's last names converted to lowercase because he is against Capitalism 
+let noCaps = runners.map((person) => {
+    return person.last_name.toLowerCase();
+});
+console.log(noCaps); 
 
 // Problem 2
-
+// Anyone with a small shirt must be small, find them so they can have a head start in the race! 
+let smallShirts = runners.filter((shirts) => {
+    return shirts.shirt_size === "S";
+});
+console.log(smallShirts);
+console.log("If your name is listed, please start at the 50m line!")
 
 // Problem 3
+// The event director is afraid his ex-wife will be present. Look for the name Charleen
+let exWife = runners.filter((person) => {
+    return person.first_name === "Charleen";
+});
+console.log(exWife + " has been disqualified for cheating. Please leave the venue.");
