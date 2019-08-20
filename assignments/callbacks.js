@@ -3,48 +3,93 @@
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 /* 
-
-  //Given this problem: 
-  
+  // GIVEN THIS PROBLEM:
   function firstItem(arr, cb) {
     // firstItem passes the first item of the given array to the callback function.
   }
-
-  // Potential Solution:
-
-  // Higher order function using "cb" as the call back
+  // SOLUTION:
   function firstItem(arr, cb) {
     return cb(arr[0]);
   }
-
-  // Function invocation 
-  firstItem(items, function(first) {
-    console.log(first)
-  });
-
+  // NOTES ON THE SOLUTION:
+  // firstItem is a higher order function.
+  // It expects a callback (referred to as `cb`) as its second argument.
+  // To test our solution, we can use the given `items` array and a variety of callbacks.
+  // Note how callbacks can be declared separately, or inlined.
+  // TEST 1 (inlined callback):
+  const test1 = firstItem(items, item => `I love my ${item}!`);
+  console.log(test1); // "I love my Pencil!"
+  // TEST 2 (declaring callback before hand):
+  function logExorbitantPrice(article) {
+    return `this ${article} is worth a million dollars!`;
+  };
+  const test2 = firstItem(items, logExorbitantPrice);
+  console.log(test2); // "this Pencil is worth a million dollars!"
 */
 
+// -|- //
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr);
 }
+
+getLength(items, function(first) {
+  console.log(first)
+});
+
+// -|- //
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
+  return cb(arr[3]);
 }
+
+last(items, function(last){
+  console.log(last)
+});
+
+// -|- //
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return cb(x, y);
 }
+
+const add = function(x,y) {
+  return x + y;
+}
+
+console.log(sumNums(1,3, add));
+
+// -|- //
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  return cb(x, y);
 }
+
+const multiply = function(x,y) {
+  return x * y;
+}
+
+console.log(multiplyNums(1,3, multiply));
+
+// -|- //
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  return cb(list.includes(item));
 }
+
+const isTrue = function(param) {
+  return param;
+};
+
+console.log(contains("Pencil", items, isTrue));
+
+// -|- //
 
 /* STRETCH PROBLEM */
 
